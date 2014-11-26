@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Virtual Laboratory for Plant Breeding Github Repository by vlpb3</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Virtual Laboratory for Plant Breeding Github Repository</h1>
+        <p>This repository contains data analysis tools developed within Virtual Laboratory for Plant Breeding Project.</p>
+
+
+        <p class="view"><a href="https://github.com/vlpb3">View My GitHub Profile</a></p>
+
+      </header>
+      <section>
+        <h1 id="rna-seq-analysis-pipelines">
+<a id="rna-seq-analysis-pipelines" class="anchor" href="#rna-seq-analysis-pipelines" aria-hidden="true"><span class="octicon octicon-link"></span></a>RNA-seq analysis pipelines</h1>
+
+<p>Small RNA pipelines have beed developed within Virtual Laboratory for Plant Breeding projects. They are mostly used with R and Python.</p>
+
+<p>Every pipeline is run in separate environment. By <em>encapsulating</em> most of the dependecies together with analysis code.</p>
+
+<h2 id="different-levels-of-dependencies-">
+<a id="different-levels-of-dependencies" class="anchor" href="#different-levels-of-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different levels of dependencies:</h2>
+
+<h3 id="system-level-packages">
+<a id="system-level-packages" class="anchor" href="#system-level-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>system level packages</h3>
+
+<h3 id="python">
+<a id="python" class="anchor" href="#python" aria-hidden="true"><span class="octicon octicon-link"></span></a>python</h3>
+
+<ul>
+<li>Python version</li>
+<li>Python moudule versions  </li>
+</ul>
+
+<p>both can be fixed with use of python virtual environment</p>
+
+<h3 id="r">
+<a id="r" class="anchor" href="#r" aria-hidden="true"><span class="octicon octicon-link"></span></a>R</h3>
+
+<ul>
+<li>R version</li>
+<li>R packages version
+the system level R version (first one in the path) is used</li>
+</ul>
+
+<p>Right versions of R packages are ensured with use of Packrat. That alows for building whole R environment with rigth R packages.<br>Packrat environment works at the level of directory.</p>
+
+<pre><div># example basicQC analysis directory </div><div># with all necessary Packrat related files and directories </div><div>.</div><div>├── basicQC.htm               # html file with QC report </div><div>├── basicQC.md                # markdown file genereated by knitr </div><div>├── basicQC.Rmd               # Rmarkdown defining the QC report </div><div>├── figure                    # plots </div><div>│   ├── A.design.plot-1.png</div><div>│   ├── C3plot-1.png</div><div>│   ├── D1plot-1.png</div><div>│   └── D2plot-1.png</div><div>├── get_experiment_fq.py      # script that imports read data form sff files into fq files </div><div>├── packrat                   # dir with R environment related files </div><div>│   ├── init.R                # script initializing Packrat environment </div><div>│   ├── lib                   # </div><div>│   ├── lib-ext               # R library </div><div>│   ├── lib-R                 # </div><div>│   ├── packrat.lock          # log of all the package versions used by this environment </div><div>│   ├── packrat.opts          # packrat options </div><div>│   └── src</div><div>├── raw                       # fastq files generated from sff files </div><div>│   ├── N406T.fastq</div><div>│   ├── N540T.fastq</div><div>│   ├── N583T.fastq</div><div>│   └── sknas.fastq</div><div>├── README.md                 # project readme file </div><div>├── seqdesign.txt             # experiment design file </div><div>└── Snakefile                 # pipeline defined for Snakemake </div></pre>
+
+<h2 id="pipelines-and-tools-developed-at-university-of-amsterdam-">
+<a id="pipelines-and-tools-developed-at-university-of-amsterdam" class="anchor" href="#pipelines-and-tools-developed-at-university-of-amsterdam" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pipelines and tools developed at University of Amsterdam:</h2>
+
+<ul>
+<li>
+<h4 id="faradr">
+<a id="faradr" class="anchor" href="#faradr" aria-hidden="true"><span class="octicon octicon-link"></span></a>faradr</h4>
+<p>R package used across the pipelines.</p>
+</li>
+<li>
+<h4 id="basicqc">
+<a id="basicqc" class="anchor" href="#basicqc" aria-hidden="true"><span class="octicon octicon-link"></span></a>basicQC</h4>
+<p>Quality control of raw reads in context of the experiment.</p>
+</li>
+<li>
+<h4 id="rnaxcout">
+<a id="rnaxcout" class="anchor" href="#rnaxcout" aria-hidden="true"><span class="octicon octicon-link"></span></a>rnaxcout</h4>
+<p>Alignment and counting fo small RNA species.</p>
+</li>
+<li>
+<h4 id="rnaxqc">
+<a id="rnaxqc" class="anchor" href="#rnaxqc" aria-hidden="true"><span class="octicon octicon-link"></span></a>rnaxqc</h4>
+<p>Quality control of small RNA counts in the context of the experiment.</p>
+</li>
+<li>
+<h4 id="srna-norm">
+<a id="srna-norm" class="anchor" href="#srna-norm" aria-hidden="true"><span class="octicon octicon-link"></span></a>sRNA-norm</h4>
+<p>Normalisation for counts based on spike-in counts.</p>
+</li>
+</ul>
+
+<h2 id="glossary-">
+<a id="glossary" class="anchor" href="#glossary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Glossary:</h2>
+
+<dl>
+  <dt>Packrat</dt>
+  <dd>Packrat is a dependency management system for R.<a href="http://rstudio.github.io/packrat/"> Read more</a>.</dd>
+
+  <dt>Snakemake</dt>
+  <dd>Python module and library for building workflows. Project's aim is to reduce the complexity of creating workflows by providing a fast and comfortable execution environment, together with a clean and modern domain specific specification language (DSL) in python style. <a href="https://bitbucket.org/johanneskoester/snakemake/wiki/Home">Read more</a>.</dd>
+
+  <dt>virtualenv</dt>
+  <dd>A tool to create isolated Python environments. See
+  <a href="http://virtualenv.readthedocs.org/en/latest/index.html"> Read more</a>.</dd>
+
+</dl>
+      </section>
+      <footer>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
